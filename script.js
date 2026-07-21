@@ -14,8 +14,6 @@ inputBox.addEventListener("keydown", function(e) {
     }
 });
 
-/* ---------------- actions ---------------- */
-
 function addTask() {
     const text = inputBox.value.trim();
 
@@ -76,8 +74,6 @@ function updateLastUpdated() {
     lastUpdated.textContent = now.toLocaleString();
 }
 
-/* ---------------- rendering ---------------- */
-
 function renderTasks() {
     listContainer.textContent = "";
 
@@ -128,7 +124,8 @@ function buildEditor(task, index) {
 
     field.addEventListener("keydown", function(e) {
         if (e.key === "Enter") commit();
-        if (e.key === "Escape") { settled = true; cancelEdit(); }
+        if (e.key === "Escape") { settled = true;
+            cancelEdit(); }
     });
 
     const save = buildButton("save", "\u2713", "Save changes", commit);
@@ -141,7 +138,6 @@ function buildEditor(task, index) {
     wrap.appendChild(save);
     wrap.appendChild(cancel);
 
-    // focus after the row is in the DOM
     setTimeout(function() {
         field.focus();
         field.setSelectionRange(field.value.length, field.value.length);
@@ -164,8 +160,6 @@ function buildButton(name, glyph, label, onClick) {
     return btn;
 }
 
-/* ---------------- events ---------------- */
-
 listContainer.addEventListener("click", function(e) {
     if (e.target.closest(".task-btn") || e.target.closest(".edit-row")) return;
 
@@ -175,8 +169,6 @@ listContainer.addEventListener("click", function(e) {
     const index = Array.prototype.indexOf.call(listContainer.children, li);
     if (index > -1 && index !== editingIndex) toggleTask(index);
 });
-
-/* ---------------- storage ---------------- */
 
 function saveTasks() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
@@ -197,7 +189,6 @@ function loadTasks() {
         const parsed = JSON.parse(raw);
         tasks = Array.isArray(parsed) ? parsed : [];
     } catch (err) {
-        // Tasks saved by the old version were stored as raw HTML — bring them across.
         tasks = migrateOldTasks(raw);
         saveTasks();
     }

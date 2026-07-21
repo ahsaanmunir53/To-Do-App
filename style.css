@@ -8,14 +8,14 @@
 .container {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(135deg, #4b77c8, #ba3dbe);
+    background: linear-gradient(135deg, #474f98, #d24d9f);
     padding: 10px;
 }
 
 .todoapp {
     width: 100%;
     max-width: 540px;
-    background: #fff;
+    background: #e9e7e7e8;
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 15px;
@@ -53,7 +53,7 @@ input {
     font-weight: 14px;
 }
 
-button {
+.row button {
     border: none;
     outline: none;
     padding: 16px 50px;
@@ -67,7 +67,7 @@ button {
 ul li {
     list-style: none;
     font-size: 17px;
-    padding: 12px 8px 12px 50px;
+    padding: 12px 96px 12px 50px;
     user-select: none;
     cursor: pointer;
     position: relative;
@@ -95,6 +95,30 @@ ul li.checked::before {
     background-image: url(images/checked.png);
 }
 
+ul li .task-text {
+    display: inline-block;
+    word-break: break-word;
+}
+
+.edit-btn {
+    position: absolute;
+    right: 45px;
+    top: 5px;
+    width: 35px;
+    height: 35px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 50%;
+    color: #555;
+}
+
+.edit-btn:hover {
+    background: #4b77c8;
+    color: white;
+}
+
 ul li span {
     position: absolute;
     right: 0;
@@ -102,13 +126,14 @@ ul li span {
     width: 40px;
     height: 40px;
     font-size: 22px;
-    COLOR: #555;
+    color: #555;
     line-height: 40px;
     text-align: center;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 ul li span:hover {
-    background: #e74c3c;
-    border-radius: 50%;
+    background: #c1301f;
+    color: white;
 }

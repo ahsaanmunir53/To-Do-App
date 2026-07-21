@@ -53,7 +53,7 @@ input {
     font-weight: 14px;
 }
 
-button {
+.row button {
     border: none;
     outline: none;
     padding: 16px 50px;
@@ -67,7 +67,7 @@ button {
 ul li {
     list-style: none;
     font-size: 17px;
-    padding: 12px 8px 12px 50px;
+    padding: 12px 96px 12px 50px;
     user-select: none;
     cursor: pointer;
     position: relative;
@@ -95,22 +95,106 @@ ul li.checked::before {
     background-image: url(images/checked.png);
 }
 
-ul li span {
+ul li .task-text {
+    display: inline-block;
+    word-break: break-word;
+}
+
+/* action buttons on each row */
+ul li .task-btn {
     position: absolute;
-    right: 0;
     top: 5px;
     width: 40px;
     height: 40px;
-    font-size: 22px;
-    COLOR: #555;
+    padding: 0;
+    font-size: 20px;
+    color: #555;
     line-height: 40px;
     text-align: center;
+    background: transparent;
+    border: none;
     border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
 }
 
-ul li span:hover {
+ul li .task-btn.remove {
+    right: 0;
+}
+
+ul li .task-btn.edit {
+    right: 44px;
+    font-size: 18px;
+}
+
+ul li .task-btn.remove:hover,
+ul li .task-btn.remove:focus-visible {
     background: #e74c3c;
-    border-radius: 50%;
+    color: #fff;
+}
+
+ul li .task-btn.edit:hover,
+ul li .task-btn.edit:focus-visible {
+    background: #4b77c8;
+    color: #fff;
+}
+
+ul li .task-btn:focus-visible {
+    outline: 2px solid #002765;
+    outline-offset: 2px;
+}
+
+/* ---- edit mode ---- */
+ul li.editing {
+    padding-right: 8px;
+    cursor: default;
+}
+
+.edit-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.edit-input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px 12px;
+    font-size: 16px;
+    color: #002765;
+    background: #edeef0;
+    border: 2px solid #4b77c8;
+    border-radius: 20px;
+    outline: none;
+}
+
+.edit-row .task-btn {
+    position: static;
+    flex-shrink: 0;
+    top: auto;
+    right: auto;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 18px;
+}
+
+.edit-row .task-btn.save:hover,
+.edit-row .task-btn.save:focus-visible {
+    background: #27ae60;
+    color: #fff;
+}
+
+.edit-row .task-btn.cancel:hover,
+.edit-row .task-btn.cancel:focus-visible {
+    background: #999;
+    color: #fff;
+}
+
+/* a task being edited keeps its text readable */
+ul li.editing.checked .edit-input {
+    text-decoration: none;
+    color: #002765;
 }
 
 .updated {

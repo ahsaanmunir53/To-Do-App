@@ -15,7 +15,7 @@
 .todoapp {
     width: 100%;
     max-width: 540px;
-    background: white;
+    background: #fff;
     margin: 100px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 15px;
@@ -100,9 +100,7 @@ ul li .task-text {
     word-break: break-word;
 }
 
-
 /* action buttons on each row */
-
 ul li .task-btn {
     position: absolute;
     top: 5px;
@@ -146,9 +144,7 @@ ul li .task-btn:focus-visible {
     outline-offset: 2px;
 }
 
-
 /* ---- edit mode ---- */
-
 ul li.editing {
     padding-right: 8px;
     cursor: default;
@@ -195,9 +191,7 @@ ul li.editing {
     color: #fff;
 }
 
-
 /* a task being edited keeps its text readable */
-
 ul li.editing.checked .edit-input {
     text-decoration: none;
     color: #002765;

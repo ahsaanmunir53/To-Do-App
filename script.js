@@ -14,6 +14,7 @@ inputBox.addEventListener("keydown", function(e) {
     }
 });
 
+
 function addTask() {
     const text = inputBox.value.trim();
 
@@ -160,6 +161,7 @@ function buildButton(name, glyph, label, onClick) {
     return btn;
 }
 
+
 listContainer.addEventListener("click", function(e) {
     if (e.target.closest(".task-btn") || e.target.closest(".edit-row")) return;
 
@@ -169,6 +171,7 @@ listContainer.addEventListener("click", function(e) {
     const index = Array.prototype.indexOf.call(listContainer.children, li);
     if (index > -1 && index !== editingIndex) toggleTask(index);
 });
+
 
 function saveTasks() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
